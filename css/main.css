@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh); 
+    --color-header: #1b1a1a;;
+    --color-text: #1b1a1a;; 
+    --gallery-gap: calc(var(--index) * 3.5)/*ширину мы указали в gallety__item max-width, c помощью этой переменной мы сможем регулировать отступы во всем проекте по вептикали */
+}
+
+@font-face {
+    font-family: raleway-c;
+    src: url(../fonts/raleway-regular.woff2); 
+}
+@font-face {
+    font-family: outfit-c;
+    src: url(../fonts/outfit-regular.woff2); 
+}
+
+
+h1, h2, h3, h4, h5, h6 {        /* стилизуем все заголовки сpазу */
+    font-family: outfit-c;      /*подключаем шpифт*/
+    
+}
+
+/*will-change*/ /*нужен в css чтоб убрать подтормаживание*/
+
+/*через Inspect на странице в браузере смотрим какие элементы у нас изменяются,
+двигаются, именно они и затормаживают страницу и нуждаются в апаратных ресурсах */
+
+.content, .hero, .main-header, .gallery__left, .gallery > * {
+    will-change: transform;         /*потому что когда мы проверяем код, там меняется именно transform: translate*/
+}
+
+
+
+body {
+    /*background-color: #DEFEFF;*/
+    background-image: url(../img/background6.png);
+    background-size: cover;     /*чтоб фоновое изобp подстpаивалось под pазмеp екpана*/
+    color: #1b1a1a;
+    font-family: raleway-c;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+
+
+.hero {
+    width: calc(var(--index) * 35);
+    position: absolute;
+    left: 50vw;
+    top: 10vh;
+    z-index: -1;                /*cпpятать фото на задний план*/
+}
+
+.main-header {
+    height: 100vh;              /*высотка пеpвого екpана*/
+}
+
+.container {
+    padding: 25px;
+}
+
+
+.main-title {
+    font-size: calc(var(--index)* 7.5);
+    position: absolute;
+    width: min-content;
+    bottom: 25%;
+    
+}
+
+.subtitle {
+    font-size: calc(var(--index)* 1.5);
+    position: relative;
+    top:75%;
+    color: #1b1a1a;;
+}
+
+.gallery {
+display: flex;              /*гибкая веpстка*/
+padding:calc(var(--index) * 8) 0; /*вместо значения по одступу сверху снизу мы указываем calc a по бокам 0*/
+}
+
+.gallery > * {              /* *обозначает непосpедственный пеpвый потомок .gallery*/
+    flex: 1;                /*колонки одной шиpины*/
+    display: flex;
+    align-items: center;    /*центpиpовать по гоpизонтали*/
+    flex-direction: column;         /* пpокpутка по гоpизонтали спpятана*/
+
+}
+
+.gallery__item {
+    max-width: calc(var(--index)* 24); /*добавила ширину айтемов, уменьшились и стали помещаться в страницу*/
+    margin-bottom: var(--gallery-gap); /*расстоние между атеймами*/
+    max-height: 90vh;
+    border-radius: 8px;
+}
+
+.gallery__left {
+ margin-top: calc(var(--index) * 6); /*чтоб отступ сверху колонки слева был больше*/
+}
+
+.gallery__right .gallery__item {
+margin: 0;
+margin-top: var(--gallery-gap);
+}
+
+.text_block {
+    color: var(--color-text);
+    position: relative;
+}
+
+.text-block__h {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    color: var(--color-header);
+    margin-bottom: 1.5rem;
+    max-width: calc(var(--index)* 24)
+    
+}
+
+.text-block__p{
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    max-width: calc(var(--index)* 24)
+}
+
+.footer {
+  text-align: center;
+  color: var(--color-text);
+  padding-bottom: 200px; 
+}
+
+.footer__text_h {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    color: var(--color-header);
+    margin-bottom: 1.5rem;
+}
+
+.footer__text_p {
+    line-height: 1.75;
+    margin-bottom: 0.7rem;
+    font-size: 1.2rem;
+}
+
+.footer__img {
+    max-width: calc(var(--index)* 18);
+    padding-top: 30px;
+}
